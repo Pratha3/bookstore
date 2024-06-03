@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books Catalog</title>
+  <style>
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #343a40;
+      padding: 10px 0;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      margin-right: 20px;
+    }
+
+    .nav-item {
+      margin-left: 20px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffc107;
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+      .books {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 45%;
+  }
+
+  .book-img {
+    max-width: 100%;
+    height: 200px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image covers the defined height */
+    border-radius: 5px;
+  }
+
+
+    .book-name {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .author {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .rating {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+
+    .info {
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #343a40;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">Books store</a>
+      <h1 class="fs-1 fw-bold text-center">Your Whishlist</h1>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/addbook" class="nav-link">Add Books</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <% books.forEach(function(book) { %>
+    <div class="books">
+      <div>
+        <img src="<%= book.bookUrl %>" alt="Book Image" class="book-img" />
+      </div>
+      <div class="descp">
+        <h2 class="book-name"><%= book.bookName %></h2>
+        <h3 class="author">by <%= book.bookAuthor %></h3>
+        <h3 class="rating">Price: <%= book.bookPrice %></h3>
+        <p class="info"><%= book.bookDisc %></p>
+        <a href="/updatebook/<%= book._id %>">
+          <button type="button">Update</button>
+        </a>
+        <form action="/deletebook/<%= book._id %>" method="post" style="display: inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+    <% }); %>
+  </main>
+</body>
+</html>

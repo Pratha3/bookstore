@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Books</title>
+  <style>
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #343a40;
+      padding: 10px 0;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      margin-right: 20px;
+    }
+
+    .nav-item {
+      margin-left: 20px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffc107;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button.btn {
+      background-color: #343a40;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.btn:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">Update Your Books</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/addbook" class="nav-link">Add Books</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <form action="/updatebook/<%= book._id %>" method="post">
+          <div class="form-field mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="bookName"
+              placeholder="Book Name"
+              value="<%= book.bookName %>"
+              required
+            />
+          </div>
+          <div class="form-field mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="bookAuthor"
+              placeholder="Book Author"
+              value="<%= book.bookAuthor %>"
+              required
+            />
+          </div>
+          <div class="form-field mb-3">
+            <input
+              type="url"
+              class="form-control"
+              name="bookUrl"
+              placeholder="Book Image Url"
+              value="<%= book.bookUrl %>"
+              required
+            />
+          </div>
+          <div class="form-field mb-3">
+            <textarea
+              class="form-control"
+              name="bookDisc"
+              placeholder="Book Description"
+              id="floatingTextarea2"
+              style="height: 100px"
+              required
+            ><%= book.bookDisc %></textarea>
+          </div>
+          <div class="form-field mb-3">
+            <input
+              type="number"
+              class="form-control"
+              name="bookPrice"
+              placeholder="Book Price"
+              value="<%= book.bookPrice %>"
+              required
+            />
+          </div>
+          <div class="form-field mb-3">
+            <button class="btn">Update Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
